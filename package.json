@@ -1,0 +1,16 @@
+{
+  "name": "resume-analyzer",
+  "version": "1.0.0",
+  "description": "",
+  "license": "ISC",
+  "author": "abash ansari",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "concurrently \"npm run dev --prefix server\"\"npm run dev --prefix client\""
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.1"
+  }
+}

@@ -1,0 +1,1 @@
+//JWT protect routes
