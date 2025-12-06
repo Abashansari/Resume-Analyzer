@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+import mongoose from "mongoose"
 
 const analyzerSchema = new mongoose.Schema({
     resumeId: {
@@ -15,20 +15,21 @@ const analyzerSchema = new mongoose.Schema({
         type: [String]
     },
     weaknesses: {
-         type: [String] 
-        },
+        type: [String]
+    },
 
     skillGap: {
-         type: [String] 
-        },
-    suggestions: { 
-        type: String 
+        type: [String]
+    },
+    suggestions: {
+        type: String
     },
 
     rawAIResponse: {
-         type: String 
-        }, // full Ollama output
+        type: String
+    }, // full Ollama output
 
     createdAt: { type: Date, default: Date.now }
 })
-export default mongoose.model('Analysis', analyzerSchema)
+const Analysis = mongoose.model('Analysis', analyzerSchema)
+export default Analysis

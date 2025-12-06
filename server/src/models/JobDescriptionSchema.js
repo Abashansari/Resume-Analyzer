@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+import mongoose from "mongoose"
 
 const JobSchema = new mongoose.Schema({
     userId: {
@@ -19,5 +19,6 @@ const JobSchema = new mongoose.Schema({
         default: Date.now
     }
 });
+const JobDescription = mongoose.model("JobDescription", JobSchema)
 
-export default mongoose.model("JobDescription", JobSchema);
+export default JobDescription

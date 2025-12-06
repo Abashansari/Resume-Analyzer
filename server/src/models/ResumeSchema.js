@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+import mongoose from "mongoose"
 
 const resumeSchema = new mongoose.Schema({
     userId: {
@@ -18,4 +18,6 @@ const resumeSchema = new mongoose.Schema({
         default: Date.now
     }
 })
-export default mongoose.model('Resume', resumeSchema)
+const Resume = mongoose.model('Resume', resumeSchema)
+
+export default Resume

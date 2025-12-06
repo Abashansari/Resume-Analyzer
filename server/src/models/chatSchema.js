@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+import mongoose from "mongoose"
 
 const ChatSchema = new mongoose.Schema({
     userId: {
@@ -20,5 +20,6 @@ const ChatSchema = new mongoose.Schema({
 
     createdAt: { type: Date, default: Date.now }
 });
+const  Chat = mongoose.model("Chat", ChatSchema)
 
-export default mongoose.model("Chat", ChatSchema);
+export default Chat
