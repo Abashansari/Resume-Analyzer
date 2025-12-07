@@ -1,4 +1,3 @@
-//handle PDF uploads
 import multer from 'multer'
 
 const storage = multer.diskStorage({
@@ -9,6 +8,20 @@ const storage = multer.diskStorage({
         cb(null, file.originalname)
     }
 })
-const uploads = multer({ storage: storage })
+
+const fileFilter = (req,file,cb)=>{
+    const allowedTypes=[
+                        'application/pdf',
+                        'application/msword',
+                        'application/vnd.openxmlformats-officedocument.wordprocessingml.document'
+                    ]
+    
+   if(allowedTypes.includes(file.mimeType)){
+       cb(null,true)
+   }else{
+       cb(new Error("Only PDF or Word files allowed!"),false)
+   }
+}
+const uploads = multer({storage, fileFilter})
 
 export default uploads;
