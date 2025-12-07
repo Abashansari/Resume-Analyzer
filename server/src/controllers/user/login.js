@@ -1,7 +1,9 @@
 import jwt from 'jsonwebtoken'
 import bcrypt from 'bcrypt'
 import dotenv from 'dotenv'
-import User from '../models/UserSchema.js'
+import User from '../../models/userSchema.js'
+
+
 
 dotenv.config()
 
@@ -13,21 +15,21 @@ const login = async (req, res) => {
             res.status(401).json({ message: "Email is required !" })
         }
 
-        const user = User.findOne(email)
+        const user = await User.findOne({email})
         if (!user) {
-            res.status(401).json({ message: "user with this email NOT exist" })
+          return res.status(401).json({ message: "user with this email NOT exist" })
         }
 
-        const compairPassword = bcrypt.compare(password, user.password)
+        const compairPassword = await bcrypt.compare(password, user.password)
         if (!compairPassword) {
-            res.status(401).json({ message: "Invalid password !" })
+           return res.status(401).json({ message: "Invalid password !" })
         }
 
         const authToken = jwt.sign({ id: user._id }, process.env.JWT_SECRET, { expiresIn: '1h' })
         res.json({ message: "sucessfully login", token: authToken })
 
         if (!authToken) {
-            res.status(403).json({ message: "Invalid token" })
+           return res.status(403).json({ message: "Invalid token" })
         }
 
     } catch (error) {

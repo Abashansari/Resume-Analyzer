@@ -1,12 +1,12 @@
-import User from "../models/UserSchema.js"
+import User from "../../models/userSchema.js"
 import bcrypt from 'bcrypt'
 
 const addUser = async (req, res) => {
-    try {
-        const { name, email, password } = req.body
 
+        const { name, email, password } = req.body
+    try {
         const salt = Number(process.env.SALT_ROUNDS)
-        const hashedPassword = bcrypt.hash(password, salt)
+        const hashedPassword = await bcrypt.hash(password, salt)
 
         const user = new User({
             name,
